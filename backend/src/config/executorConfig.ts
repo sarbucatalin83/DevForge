@@ -30,7 +30,7 @@ function isValidEntry(value: unknown): value is ExecutorConfig {
 }
 
 function loadExecutorConfig(): Record<string, ExecutorConfig> {
-  const configPath = path.resolve(process.cwd(), 'executor-config.json')
+  const configPath = path.resolve(__dirname, '../../../executor-config.json')
   let raw: string
   try {
     raw = fs.readFileSync(configPath, 'utf-8')

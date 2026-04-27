@@ -24,7 +24,8 @@
       "Bash(npx shadcn@latest add button --yes)",
       "Bash(npx shadcn@latest add dialog --yes)",
       "Bash(npm run *)",
-      "Bash(npx tsc *)"
+      "Bash(npx tsc *)",
+      "Bash(powershell -File \".specify/scripts/powershell/check-prerequisites.ps1\" -Json -RequireTasks -IncludeTasks)"
     ]
   }
 }

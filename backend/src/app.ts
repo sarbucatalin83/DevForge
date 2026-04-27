@@ -3,6 +3,7 @@ import cors from 'cors'
 import type { ErrorRequestHandler } from 'express'
 import authMiddleware from './api/authMiddleware'
 import contentRouter from './api/content'
+import executeRouter from './api/execute'
 
 const app = express()
 
@@ -11,7 +12,7 @@ app.use(express.json())
 app.use(authMiddleware)
 
 app.use('/api/content', contentRouter)
-// app.use('/api/execute', executeRouter)
+app.use('/api/execute', executeRouter)
 // app.use('/api/coverage', coverageRouter)
 
 app.get('/health', (_req, res) => {
