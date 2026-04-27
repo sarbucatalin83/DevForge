@@ -1,0 +1,12 @@
+node_modules/
+.git/
+*.log
+.env*
+coverage/
+dist/
+build/
+specs/
+devlearn/
+content/
+frontend/
+scripts/
