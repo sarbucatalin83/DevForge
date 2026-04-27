@@ -76,14 +76,14 @@ see the correct answer and explanation, and self-assess pass/fail. Progress is s
 the correct answer and explanation appear alongside your answer, click "I got it" or
 "I missed it", navigate back to the same question and confirm the verdict is shown.
 
-- [ ] T030 [US1] Implement `backend/src/api/content.ts` Express router — GET `/api/content` (query params: `track`, `topic`, `difficulty`, `type`; delegates to `contentLoader.getItems(filter)`); GET `/api/content/:id` (delegates to `contentLoader.getItemById`); apply `authMiddleware` to both routes
-- [ ] T031 [P] [US1] Register content router in `backend/src/app.ts` under `/api/content`
-- [ ] T032 [P] [US1] Create `frontend/src/components/quiz/QuizCard.tsx` — renders question text, a `<textarea>` for the learner's answer, a Submit button, and a Show Answer button; does not render the answer pane itself
-- [ ] T033 [P] [US1] Create `frontend/src/components/quiz/AnswerReveal.tsx` — two-column layout: learner's submitted answer on the left, correct answer + explanation on the right; shown only after submit or Show Answer
-- [ ] T034 [P] [US1] Create `frontend/src/components/quiz/SelfAssessButtons.tsx` — "I got it" (records `pass`) and "I missed it" (records `fail`) buttons; hidden until AnswerReveal is visible; calls `onAssess(verdict: 'pass' | 'fail')` prop
-- [ ] T035 [US1] Implement `frontend/src/pages/QuizPage.tsx` — use `useContent` + `buildQuizSession` to build the session; drive QuizCard → AnswerReveal → SelfAssessButtons flow; on assess call `useProgress.recordVerdict`; navigate to next item; show session-complete state when all items exhausted
-- [ ] T036 [P] [US1] Add Show Answer path in `QuizPage.tsx` — clicking Show Answer before submitting reveals AnswerReveal, records verdict as `'skipped'` via `useProgress.recordVerdict`, bypasses SelfAssessButtons
-- [ ] T037 [P] [US1] Add `EmptyState` to `QuizPage.tsx` when `useContent` returns no items for the active filter — include the exact `node scripts/generate-content.js --track {track} --topic {topic} --difficulty {difficulty} --type quiz` command
+- [x] T030 [US1] Implement `backend/src/api/content.ts` Express router — GET `/api/content` (query params: `track`, `topic`, `difficulty`, `type`; delegates to `contentLoader.getItems(filter)`); GET `/api/content/:id` (delegates to `contentLoader.getItemById`); apply `authMiddleware` to both routes
+- [x] T031 [P] [US1] Register content router in `backend/src/app.ts` under `/api/content`
+- [x] T032 [P] [US1] Create `frontend/src/components/quiz/QuizCard.tsx` — renders question text, a `<textarea>` for the learner's answer, a Submit button, and a Show Answer button; does not render the answer pane itself
+- [x] T033 [P] [US1] Create `frontend/src/components/quiz/AnswerReveal.tsx` — two-column layout: learner's submitted answer on the left, correct answer + explanation on the right; shown only after submit or Show Answer
+- [x] T034 [P] [US1] Create `frontend/src/components/quiz/SelfAssessButtons.tsx` — "I got it" (records `pass`) and "I missed it" (records `fail`) buttons; hidden until AnswerReveal is visible; calls `onAssess(verdict: 'pass' | 'fail')` prop
+- [x] T035 [US1] Implement `frontend/src/pages/QuizPage.tsx` — use `useContent` + `buildQuizSession` to build the session; drive QuizCard → AnswerReveal → SelfAssessButtons flow; on assess call `useProgress.recordVerdict`; navigate to next item; show session-complete state when all items exhausted
+- [x] T036 [P] [US1] Add Show Answer path in `QuizPage.tsx` — clicking Show Answer before submitting reveals AnswerReveal, records verdict as `'skipped'` via `useProgress.recordVerdict`, bypasses SelfAssessButtons
+- [x] T037 [P] [US1] Add `EmptyState` to `QuizPage.tsx` when `useContent` returns no items for the active filter — include the exact `node scripts/generate-content.js --track {track} --topic {topic} --difficulty {difficulty} --type quiz` command
 
 **Checkpoint**: User Story 1 is fully functional and independently testable. Progress persists
 across browser refresh. Show Answer records a skip. Verdict is visible on revisit.
