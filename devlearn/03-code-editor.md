@@ -46,10 +46,23 @@ Each exercise is a JSON bundle with the following fields:
 7. **Fail** (one or more tests red): show which tests failed and reveal the reference
    solution side by side with the user's code.
 
+## Live Output Preview
+
+On every submission, a sandboxed output preview is rendered alongside the test results:
+
+- **JavaScript / TypeScript**: shows console output and any DOM output produced by the code.
+- **React**: renders the component(s) visually so the learner can see what their code produces.
+
+The preview updates **only on Submit** — not while typing. It is shown for both pass and fail
+results. On a timeout the preview is not shown.
+
+The preview pane is sandboxed and cannot affect the host application or access resources
+outside the exercise scope.
+
 ## No Hints
 
-There is no hint system. The only feedback path is: submit → result → optional solution
-reveal on failure.
+There is no hint system. The feedback path is: submit → test results + live preview → optional
+solution reveal on failure.
 
 ## Layout
 
