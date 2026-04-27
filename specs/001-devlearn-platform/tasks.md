@@ -126,10 +126,10 @@ reset progress for a track or for everything with a confirmation step.
 counts match verdicts. Reset one track, confirm counts return to zero. Refresh — data is
 still correct.
 
-- [ ] T048 [P] [US3] Create `frontend/src/components/progress/ProgressSummary.tsx` — reads all `ProgressRecord`s from `useProgress`; groups by track; displays attempted, passed, skipped counts per track as a summary card row
-- [ ] T049 [P] [US3] Create `frontend/src/components/progress/TrackProgress.tsx` — props: `track: Track`; reads records for that track; groups by topic; renders a table of topic / attempted / passed / skipped per topic
-- [ ] T050 [P] [US3] Create `frontend/src/components/progress/ResetConfirmDialog.tsx` — shadcn `Dialog`: accepts `scope: Track | 'all'`; shows confirmation text; on confirm calls `useProgress.resetTrack(track)` or `useProgress.resetAll()`; on cancel dismisses with no change
-- [ ] T051 [US3] Implement `frontend/src/pages/ProgressPage.tsx` — render `ProgressSummary` at top; render `TrackProgress` for each of the three tracks; per-track reset button opens `ResetConfirmDialog`; a global "Reset All" button opens `ResetConfirmDialog` with `scope='all'`; all data sourced from `useProgress`
+- [x] T048 [P] [US3] Create `frontend/src/components/progress/ProgressSummary.tsx` — reads all `ProgressRecord`s from `useProgress`; groups by track; displays attempted, passed, skipped counts per track as a summary card row
+- [x] T049 [P] [US3] Create `frontend/src/components/progress/TrackProgress.tsx` — props: `track: Track`; reads records for that track; groups by topic; renders a table of topic / attempted / passed / skipped per topic
+- [x] T050 [P] [US3] Create `frontend/src/components/progress/ResetConfirmDialog.tsx` — shadcn `Dialog`: accepts `scope: Track | 'all'`; shows confirmation text; on confirm calls `useProgress.resetTrack(track)` or `useProgress.resetAll()`; on cancel dismisses with no change
+- [x] T051 [US3] Implement `frontend/src/pages/ProgressPage.tsx` — render `ProgressSummary` at top; render `TrackProgress` for each of the three tracks; per-track reset button opens `ResetConfirmDialog`; a global "Reset All" button opens `ResetConfirmDialog` with `scope='all'`; all data sourced from `useProgress`
 
 **Checkpoint**: User Story 3 is independently functional. Counts are accurate after quizzes
 and exercises. Reset clears the correct scope. Data survives page refresh.
