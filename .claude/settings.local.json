@@ -6,7 +6,25 @@
       "Bash(git -C \"D:/EU/DevForge\" checkout main)",
       "Bash(git -C \"D:/EU/DevForge\" branch -D 001-devlearn-platform)",
       "Bash(git -C \"D:/EU/DevForge\" remote get-url origin)",
-      "Bash(git *)"
+      "Bash(git *)",
+      "Bash(gh auth *)",
+      "Bash(bash *)",
+      "Bash(gh pr *)",
+      "Bash(powershell -Command \".specify/scripts/powershell/setup-plan.ps1 -Json\")",
+      "Bash(powershell -File \".specify/extensions/git/scripts/powershell/initialize-repo.ps1\")",
+      "Bash(powershell -Command \".specify/scripts/powershell/check-prerequisites.ps1 -Json\")",
+      "Bash(powershell.exe -File \".specify/scripts/powershell/check-prerequisites.ps1\" -Json -RequireTasks -IncludeTasks)",
+      "Bash(ls -la frontend/)",
+      "Bash(ls -la backend/)",
+      "Bash(npm install *)",
+      "Bash(npm create *)",
+      "Bash(npm audit *)",
+      "Bash(npx shadcn@latest init --yes --base-color slate)",
+      "Bash(npx shadcn@latest init --yes)",
+      "Bash(npx shadcn@latest add button --yes)",
+      "Bash(npx shadcn@latest add dialog --yes)",
+      "Bash(npm run *)",
+      "Bash(npx tsc *)"
     ]
   }
 }

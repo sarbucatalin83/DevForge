@@ -1,22 +1,24 @@
 <!--
 SYNC IMPACT REPORT
 ==================
-Version change: 0.0.0 → 1.0.0 (initial ratification — all principles new)
+Version change: 1.0.0 → 1.1.0 (MINOR — new language constraint added to Technology Constraints)
 
-Modified principles: N/A (first adoption)
+Modified principles: None renamed or removed.
 
-Added sections:
-  - Core Principles (I–VI)
-  - Technology Constraints
-  - Scope Boundary
-  - Governance
+Added constraints:
+  - Technology Constraints table: new row "Application language → TypeScript 5.5+"
+  - Additional constraints: TypeScript strict mode requirement (both frontend + backend)
 
 Removed sections: N/A
 
 Templates reviewed:
-  - .specify/templates/plan-template.md     ✅ Constitution Check section present; generic gates apply
-  - .specify/templates/spec-template.md     ✅ No constitution-specific changes required
-  - .specify/templates/tasks-template.md    ✅ Phase structure compatible with all six principles
+  - .specify/templates/plan-template.md     ✅ No changes required — Language/Version field is generic
+  - .specify/templates/spec-template.md     ✅ No changes required — spec template is language-agnostic
+  - .specify/templates/tasks-template.md    ✅ No changes required — task structure is generic
+
+Agent guidance files reviewed:
+  - CLAUDE.md     ✅ Already reflects TypeScript 5.5+ with strict mode — consistent
+  - AGENTS.md     ✅ Already reflects TypeScript 5.5+ with strict mode — consistent
 
 Deferred TODOs: none
 -->
@@ -107,15 +109,18 @@ amendment:
 
 | Layer | Choice |
 |-------|--------|
-| Frontend framework | React + Vite |
+| Application language | TypeScript 5.5+ (frontend and backend) |
+| Frontend framework | React 19 + Vite (SPA — no server components, not NextJS) |
 | UI component library | shadcn/ui (Tailwind-based) — no other CSS frameworks |
 | In-browser code editor | Monaco Editor |
-| Backend runtime | Node.js + Express (local server only) |
+| Backend runtime | Node.js 20 LTS + Express (local server only) |
 | JS/TS test runner (in Docker) | Jest |
 | Styling | Tailwind CSS via shadcn only |
 
 Additional constraints:
 
+- TypeScript MUST be configured with `strict: true` in both `frontend/tsconfig.json` and
+  `backend/tsconfig.json`. The `any` type is prohibited; use `unknown` and narrow explicitly.
 - No ORM, no SQL database, no Redis MAY be introduced in v1.
 - The backend MUST remain a local-only server; no cloud hosting configuration is permitted
   in v1.
@@ -164,4 +169,4 @@ and again after Phase 1 design.
 
 ---
 
-**Version**: 1.0.0 | **Ratified**: 2026-04-26 | **Last Amended**: 2026-04-26
+**Version**: 1.1.0 | **Ratified**: 2026-04-26 | **Last Amended**: 2026-04-27
