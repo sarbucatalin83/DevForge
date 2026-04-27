@@ -45,23 +45,23 @@ this phase is complete.
 
 **⚠️ CRITICAL**: All T013–T029 must be complete before any Phase 3+ task starts.
 
-- [ ] T013 Create shared TypeScript types in `frontend/src/types/index.ts` — export `Track`, `Difficulty`, `ExerciseType`, `Verdict`, `QuizItem`, `CodingExercise`, `ProgressRecord`, `ContentFilter`, `ExecutionResult` as per AGENTS.md data shapes
-- [ ] T014 [P] Create matching TypeScript types in `backend/src/types/index.ts` — same domain types plus `ExecutorConfig` and `ContentLoadResult`
-- [ ] T015 [P] Create auth middleware pass-through in `backend/src/api/authMiddleware.ts` — `(req, res, next) => { (req as any).userId = 'local'; next(); }` — v1 stub for future JWT replacement
-- [ ] T016 Set up Express app in `backend/src/app.ts` — register CORS, JSON body-parser, authMiddleware, placeholder route mounts, and a catch-all error handler that returns `{ error, remediation }` JSON
-- [ ] T017 [P] Create `backend/src/server.ts` entry point — start Express on port 3001; on startup ping Docker daemon and log a remediation message if unreachable (app still starts for quiz mode)
-- [ ] T018 [P] Implement `backend/src/config/executorConfig.ts` — load and JSON-parse `executor-config.json` from repo root; validate each entry has required fields; throw with a remediation message if malformed
-- [ ] T019 Implement `backend/src/content/contentLoader.ts` — walk the `content/` directory tree, load each JSON file, validate it matches the `QuizItem` or `CodingExercise` schema, skip malformed files silently, cache valid items in memory; export `getItems(filter)` and `getItemById(id)`
-- [ ] T020 [P] Create `frontend/src/context/AuthContext.tsx` — React context providing `{ user: null, isAuthenticated: false }` with no-op `login` and `logout` stubs; wraps the app in `main.tsx`
-- [ ] T021 [P] Create `frontend/src/lib/progressRepository.ts` — define `ProgressRepository` interface (`get`, `set`, `resetTrack`, `resetAll`); implement `LocalStorageProgressRepository` using keys `devlearn_progress_{itemId}`; export a singleton instance
-- [ ] T022 [P] Create `frontend/src/lib/session.ts` — export `shuffleArray<T>(arr: T[]): T[]`, `buildQuizSession(items: QuizItem[]): QuizItem[]` (fully randomised), `buildExerciseSession(items: CodingExercise[]): CodingExercise[]` (sorted by difficulty tier, randomised within each tier)
-- [ ] T023 [P] Create `frontend/src/components/shared/EmptyState.tsx` — props: `title`, `message`, optional `cliCommand`; renders message and, if provided, the CLI command in a styled `<code>` block
-- [ ] T024 [P] Create `frontend/src/components/shared/ErrorBanner.tsx` — props: `message`, `remediation`; dismissible banner; used for all runtime errors
-- [ ] T025 [P] Create `frontend/src/components/shared/ThemeToggle.tsx` — reads `prefers-color-scheme` as default, toggles `data-theme="dark"|"light"` on `<html>`, persists choice in `localStorage`
-- [ ] T026 [P] Create `frontend/src/components/shared/FilterBar.tsx` — controlled selectors for track, topic (derived from loaded content), difficulty, and type; calls `onFilterChange: (filter: ContentFilter) => void` on every change
-- [ ] T027 Set up React Router v6 in `frontend/src/main.tsx` — routes: `/quiz` → QuizPage, `/exercises` → ExercisePage, `/progress` → ProgressPage, `/coverage` → CoveragePage; wrap tree with AuthContext, FilterContext (from Phase 7), and TanStack QueryClientProvider
-- [ ] T028 [P] Create `frontend/src/hooks/useContent.ts` — fetch `/api/content` with `ContentFilter` params using TanStack Query (`useQuery`); return `{ items, isLoading, error }`
-- [ ] T029 [P] Create `frontend/src/hooks/useProgress.ts` — expose `getRecord(itemId)`, `recordVerdict(itemId, verdict)`, `resetTrack(track)`, `resetAll()` backed by the ProgressRepository singleton; invalidates local state on write
+- [x] T013 Create shared TypeScript types in `frontend/src/types/index.ts` — export `Track`, `Difficulty`, `ExerciseType`, `Verdict`, `QuizItem`, `CodingExercise`, `ProgressRecord`, `ContentFilter`, `ExecutionResult` as per AGENTS.md data shapes
+- [x] T014 [P] Create matching TypeScript types in `backend/src/types/index.ts` — same domain types plus `ExecutorConfig` and `ContentLoadResult`
+- [x] T015 [P] Create auth middleware pass-through in `backend/src/api/authMiddleware.ts` — uses module augmentation to add `userId: string` to Express Request (no `any`); sets `req.userId = 'local'`; v1 stub for future JWT replacement
+- [x] T016 Set up Express app in `backend/src/app.ts` — register CORS, JSON body-parser, authMiddleware, placeholder route mounts, and a catch-all error handler that returns `{ error, remediation }` JSON
+- [x] T017 [P] Create `backend/src/server.ts` entry point — start Express on port 3001; on startup ping Docker daemon and log a remediation message if unreachable (app still starts for quiz mode)
+- [x] T018 [P] Implement `backend/src/config/executorConfig.ts` — load and JSON-parse `executor-config.json` from repo root; validate each entry has required fields; throw with a remediation message if malformed
+- [x] T019 Implement `backend/src/content/contentLoader.ts` — walk the `content/` directory tree, load each JSON file, validate it matches the `QuizItem` or `CodingExercise` schema, skip malformed files silently, cache valid items in memory; export `getItems(filter)` and `getItemById(id)`
+- [x] T020 [P] Create `frontend/src/context/AuthContext.tsx` — React context providing `{ user: null, isAuthenticated: false }` with no-op `login` and `logout` stubs; wraps the app in `main.tsx`
+- [x] T021 [P] Create `frontend/src/lib/progressRepository.ts` — define `ProgressRepository` interface (`get`, `set`, `resetTrack`, `resetAll`); implement `LocalStorageProgressRepository` using keys `devlearn_progress_{itemId}`; export a singleton instance
+- [x] T022 [P] Create `frontend/src/lib/session.ts` — export `shuffleArray<T>(arr: T[]): T[]`, `buildQuizSession(items: QuizItem[]): QuizItem[]` (fully randomised), `buildExerciseSession(items: CodingExercise[]): CodingExercise[]` (sorted by difficulty tier, randomised within each tier)
+- [x] T023 [P] Create `frontend/src/components/shared/EmptyState.tsx` — props: `title`, `message`, optional `cliCommand`; renders message and, if provided, the CLI command in a styled `<code>` block
+- [x] T024 [P] Create `frontend/src/components/shared/ErrorBanner.tsx` — props: `message`, `remediation`; dismissible banner; used for all runtime errors
+- [x] T025 [P] Create `frontend/src/components/shared/ThemeToggle.tsx` — reads `prefers-color-scheme` as default, toggles `data-theme="dark"|"light"` on `<html>`, persists choice in `localStorage`
+- [x] T026 [P] Create `frontend/src/components/shared/FilterBar.tsx` — controlled selectors for track, topic (passed as `availableTopics` prop), difficulty, and type; calls `onFilterChange: (filter: ContentFilter) => void` on every change
+- [x] T027 Set up React Router v6 in `frontend/src/main.tsx` — routes: `/quiz` → QuizPage, `/exercises` → ExercisePage, `/progress` → ProgressPage, `/coverage` → CoveragePage; wrap tree with AuthContext and TanStack QueryClientProvider (FilterContext slot noted for Phase 7)
+- [x] T028 [P] Create `frontend/src/hooks/useContent.ts` — fetch `/api/content` with `ContentFilter` params using TanStack Query (`useQuery`); return `{ items, isLoading, error }`
+- [x] T029 [P] Create `frontend/src/hooks/useProgress.ts` — expose `getRecord(itemId)`, `recordVerdict(itemId, verdict)`, `resetTrack(track)`, `resetAll()` backed by the ProgressRepository singleton; invalidates local state on write
 
 **Checkpoint**: With Phase 2 complete, both processes start, content loads, and shared UI primitives are available. User story work can now begin.
 
