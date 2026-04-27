@@ -144,11 +144,11 @@ restart. A coverage view shows gaps.
 
 **Independent Test**: Run `node scripts/generate-content.js --track javascript --topic closures --difficulty beginner --type quiz --count 3`, open `/quiz`, apply matching filter, confirm 3 new items appear. Open `/coverage`, confirm counts reflect the new items.
 
-- [ ] T052 [US4] Implement `scripts/generate-content.js` — CLI arg parsing (`--track`, `--topic`, `--difficulty`, `--type`, `--count`, `--replace`); call Claude API with a content-generation prompt; for each returned item: validate JSON schema, resolve file path `content/{track}/{topic}/{difficulty}/{type}/`, write to disk immediately; if an item fails validation: log and skip without stopping the batch; on any unrecoverable error: stop and report how many items were saved vs. requested (FR-018a)
-- [ ] T053 [US4] Implement `backend/src/api/coverage.ts` Express router — GET `/api/coverage`: call `contentLoader.getItems({})` to get all items, group by `track/topic/difficulty/type`, return counts array `{ track, topic, difficulty, type, count }[]`; apply `authMiddleware`
-- [ ] T054 [P] [US4] Register coverage router in `backend/src/app.ts` under `/api/coverage`
-- [ ] T055 [P] [US4] Create `frontend/src/components/coverage/CoverageTable.tsx` — renders a table with columns track / topic / difficulty / type / count; rows with `count === 0` highlighted; read-only, no interactions
-- [ ] T056 [US4] Implement `frontend/src/pages/CoveragePage.tsx` — fetch `/api/coverage` via TanStack Query; render `CoverageTable`; show `EmptyState` if content library is completely empty (with instructions to run `generate-content.js`)
+- [x] T052 [US4] Implement `scripts/generate-content.js` — CLI arg parsing (`--track`, `--topic`, `--difficulty`, `--type`, `--count`, `--replace`); call Claude API with a content-generation prompt; for each returned item: validate JSON schema, resolve file path `content/{track}/{topic}/{difficulty}/{type}/`, write to disk immediately; if an item fails validation: log and skip without stopping the batch; on any unrecoverable error: stop and report how many items were saved vs. requested (FR-018a)
+- [x] T053 [US4] Implement `backend/src/api/coverage.ts` Express router — GET `/api/coverage`: call `contentLoader.getItems({})` to get all items, group by `track/topic/difficulty/type`, return counts array `{ track, topic, difficulty, type, count }[]`; apply `authMiddleware`
+- [x] T054 [P] [US4] Register coverage router in `backend/src/app.ts` under `/api/coverage`
+- [x] T055 [P] [US4] Create `frontend/src/components/coverage/CoverageTable.tsx` — renders a table with columns track / topic / difficulty / type / count; rows with `count === 0` highlighted; read-only, no interactions
+- [x] T056 [US4] Implement `frontend/src/pages/CoveragePage.tsx` — fetch `/api/coverage` via TanStack Query; render `CoverageTable`; show `EmptyState` if content library is completely empty (with instructions to run `generate-content.js`)
 
 **Checkpoint**: User Story 4 is independently functional. CLI tool produces valid JSON files.
 Coverage page reflects current library state without an app restart.
@@ -165,10 +165,10 @@ show the exact CLI command for the current filter combination.
 ExercisePage — verify filter is still React / Hooks / Intermediate. Select a combination
 with no content — verify the EmptyState includes the exact CLI command for that combination.
 
-- [ ] T057 [US5] Create `frontend/src/context/FilterContext.tsx` — React context holding `filter: ContentFilter` and `setFilter`; wraps the router in `frontend/src/main.tsx` so filter state is shared across all pages
-- [ ] T058 [P] [US5] Create `frontend/src/hooks/useFilterState.ts` — thin hook that reads and writes from `FilterContext`; used by FilterBar and all pages instead of local state
-- [ ] T059 [US5] Update `QuizPage.tsx` and `ExercisePage.tsx` to consume `useFilterState` instead of local filter state — switching between `/quiz` and `/exercises` now preserves the active track/topic/difficulty/type selection
-- [ ] T060 [P] [US5] Update `EmptyState` in `QuizPage.tsx` and `ExercisePage.tsx` to interpolate the active filter values into the CLI command (`--track {filter.track} --topic {filter.topic} --difficulty {filter.difficulty} --type {filter.type}`) so the command is copy-pasteable for the exact current selection
+- [x] T057 [US5] Create `frontend/src/context/FilterContext.tsx` — React context holding `filter: ContentFilter` and `setFilter`; wraps the router in `frontend/src/main.tsx` so filter state is shared across all pages
+- [x] T058 [P] [US5] Create `frontend/src/hooks/useFilterState.ts` — thin hook that reads and writes from `FilterContext`; used by FilterBar and all pages instead of local state
+- [x] T059 [US5] Update `QuizPage.tsx` and `ExercisePage.tsx` to consume `useFilterState` instead of local filter state — switching between `/quiz` and `/exercises` now preserves the active track/topic/difficulty/type selection
+- [x] T060 [P] [US5] Update `EmptyState` in `QuizPage.tsx` and `ExercisePage.tsx` to interpolate the active filter values into the CLI command (`--track {filter.track} --topic {filter.topic} --difficulty {filter.difficulty} --type {filter.type}`) so the command is copy-pasteable for the exact current selection
 
 **Checkpoint**: User Story 5 is independently functional. Filter state persists across mode
 switches. Every empty state shows a directly usable CLI command.
@@ -180,12 +180,12 @@ switches. Every empty state shows a directly usable CLI command.
 **Purpose**: Cross-story improvements required to meet all success criteria and ship a
 production-ready v1.
 
-- [ ] T061 Create `frontend/src/components/shared/AppLayout.tsx` — persistent header with navigation links to `/quiz`, `/exercises`, `/progress`, `/coverage`; ThemeToggle in the top-right; active route highlighted; wraps all page routes
-- [ ] T062 [P] Add starter content to `content/` — generate and commit at least 5 quiz items per track (JavaScript, TypeScript, React) across at least 2 topics and 2 difficulty levels, so the app is immediately usable after `npm install` (FR-022, SC-001)
-- [ ] T063 [P] Implement corrupted-localStorage recovery in `frontend/src/lib/progressRepository.ts` — wrap all `JSON.parse` calls in try/catch; on `SyntaxError` log a warning, remove the corrupted key, and return a clean default state; app must not crash (spec edge case)
-- [ ] T064 [P] Audit all `ErrorBanner` and `EmptyState` usages across all pages — verify every instance includes both a `message` and a `remediation` prop with a concrete next step (SC-007)
-- [ ] T065 [P] Add `backend/src/content/contentLoader.ts` hot-reload support — watch `content/` with `fs.watch`, invalidate the in-memory cache on any file-system event, so newly generated content appears in the app without a backend restart (FR-019 usability)
-- [ ] T066 Run end-to-end validation against all success criteria — app startup < 5 s (SC-003), first quiz < 60 s from cold start (SC-001), code submission < 15 s (SC-002), progress survives refresh (SC-004), adding a new track requires only config + content files (SC-005), malformed content files are skipped (SC-006)
+- [x] T061 Create `frontend/src/components/shared/AppLayout.tsx` — persistent header with navigation links to `/quiz`, `/exercises`, `/progress`, `/coverage`; ThemeToggle in the top-right; active route highlighted; wraps all page routes
+- [x] T062 [P] Add starter content to `content/` — generate and commit at least 5 quiz items per track (JavaScript, TypeScript, React) across at least 2 topics and 2 difficulty levels, so the app is immediately usable after `npm install` (FR-022, SC-001)
+- [x] T063 [P] Implement corrupted-localStorage recovery in `frontend/src/lib/progressRepository.ts` — wrap all `JSON.parse` calls in try/catch; on `SyntaxError` log a warning, remove the corrupted key, and return a clean default state; app must not crash (spec edge case)
+- [x] T064 [P] Audit all `ErrorBanner` and `EmptyState` usages across all pages — verify every instance includes both a `message` and a `remediation` prop with a concrete next step (SC-007)
+- [x] T065 [P] Add `backend/src/content/contentLoader.ts` hot-reload support — watch `content/` with `fs.watch`, invalidate the in-memory cache on any file-system event, so newly generated content appears in the app without a backend restart (FR-019 usability)
+- [x] T066 Run end-to-end validation against all success criteria — app startup < 5 s (SC-003), first quiz < 60 s from cold start (SC-001), code submission < 15 s (SC-002), progress survives refresh (SC-004), adding a new track requires only config + content files (SC-005), malformed content files are skipped (SC-006)
 
 ---
 

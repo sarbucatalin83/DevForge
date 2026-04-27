@@ -1,0 +1,10 @@
+{
+  "id": "c5d6e7f8",
+  "track": "react",
+  "topic": "hooks",
+  "difficulty": "beginner",
+  "type": "quiz",
+  "question": "When does the cleanup function returned from useEffect run?",
+  "answer": "The cleanup function runs before the effect runs again (when dependencies change) and when the component unmounts. It does NOT run on the first render — only on subsequent re-runs and unmount.",
+  "explanation": "Cleanups are used to cancel subscriptions, clear timers, abort fetch requests, or remove event listeners. If you start a setInterval in an effect, the cleanup cancels it. If you subscribe to an event in an effect, the cleanup unsubscribes. This prevents memory leaks and stale callbacks."
+}

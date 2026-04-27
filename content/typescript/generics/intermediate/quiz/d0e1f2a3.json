@@ -1,0 +1,10 @@
+{
+  "id": "d0e1f2a3",
+  "track": "typescript",
+  "topic": "generics",
+  "difficulty": "intermediate",
+  "type": "quiz",
+  "question": "What does a generic constraint (`<T extends SomeType>`) do?",
+  "answer": "A generic constraint restricts which types can be substituted for the type parameter T. It ensures T has at least the shape of SomeType, letting you safely access properties and methods defined on SomeType within the generic function or class.",
+  "explanation": "Without constraints, TypeScript knows nothing about T and won't let you access any properties. With `T extends { length: number }` for example, you can safely access `.length` on any T. Constraints are how you write type-safe generic code that relies on specific capabilities of the type argument."
+}

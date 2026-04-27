@@ -1,0 +1,10 @@
+{
+  "id": "d4e5f6a7",
+  "track": "javascript",
+  "topic": "promises",
+  "difficulty": "intermediate",
+  "type": "quiz",
+  "question": "What is the difference between Promise.all() and Promise.allSettled()?",
+  "answer": "Promise.all() rejects as soon as any promise in the array rejects (fail-fast). Promise.allSettled() waits for all promises to complete regardless of outcome and returns an array of result objects with a `status` field ('fulfilled' or 'rejected').",
+  "explanation": "Use Promise.all() when you need all operations to succeed — one failure aborts the whole batch. Use Promise.allSettled() when you need to process all results regardless of individual failures, such as running multiple independent API calls and reporting each outcome separately."
+}

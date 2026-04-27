@@ -1,6 +1,7 @@
 import { useState, useMemo } from 'react'
 import { useContent } from '@/hooks/useContent'
 import { useProgress } from '@/hooks/useProgress'
+import { useFilterState } from '@/hooks/useFilterState'
 import { buildQuizSession } from '@/lib/session'
 import { QuizCard } from '@/components/quiz/QuizCard'
 import { AnswerReveal } from '@/components/quiz/AnswerReveal'
@@ -17,12 +18,13 @@ type CardState =
   | { phase: 'assessed'; verdict: Verdict; learnerAnswer: string | null }
 
 export default function QuizPage() {
-  const [filter, setFilter] = useState<ContentFilter>({ type: 'quiz' })
+  const { filter, setFilter } = useFilterState()
   const [sessionIndex, setSessionIndex] = useState(0)
   const [sessionSeed, setSessionSeed] = useState(0)
   const [cardState, setCardState] = useState<CardState>({ phase: 'answering' })
 
-  const { items: allItems, isLoading, error } = useContent(filter)
+  const activeFilter: ContentFilter = { ...filter, type: 'quiz' }
+  const { items: allItems, isLoading, error } = useContent(activeFilter)
   const { recordVerdict } = useProgress()
 
   const quizItems = useMemo(
@@ -40,7 +42,7 @@ export default function QuizPage() {
   const isComplete = !isLoading && quizItems.length > 0 && sessionIndex >= quizItems.length
 
   function handleFilterChange(f: ContentFilter) {
-    setFilter({ ...f, type: 'quiz' })
+    setFilter({ ...f, type: undefined })
     setSessionIndex(0)
     setSessionSeed((n) => n + 1)
     setCardState({ phase: 'answering' })
@@ -93,7 +95,7 @@ export default function QuizPage() {
       <h1 className="text-2xl font-semibold">Quiz</h1>
 
       <FilterBar
-        filter={filter}
+        filter={activeFilter}
         availableTopics={availableTopics}
         onFilterChange={handleFilterChange}
       />

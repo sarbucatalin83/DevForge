@@ -1,0 +1,10 @@
+{
+  "id": "c3d4e5f6",
+  "track": "javascript",
+  "topic": "closures",
+  "difficulty": "beginner",
+  "type": "quiz",
+  "question": "Why does the following loop print '5' five times instead of 0,1,2,3,4?\n\nfor (var i = 0; i < 5; i++) {\n  setTimeout(function() { console.log(i); }, 0);\n}",
+  "answer": "Because `var` is function-scoped (not block-scoped), there is only one `i` variable shared by all the callbacks. By the time the setTimeout callbacks run, the loop has already finished and `i` is 5.",
+  "explanation": "All five closures share the same `i` variable declared with `var`. The loop completes synchronously before any callback fires, leaving i === 5. The fix is to use `let` (which creates a new binding per iteration) or wrap the callback in an IIFE to capture the current value of i."
+}

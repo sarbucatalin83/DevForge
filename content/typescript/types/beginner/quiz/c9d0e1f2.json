@@ -1,0 +1,10 @@
+{
+  "id": "c9d0e1f2",
+  "track": "typescript",
+  "topic": "types",
+  "difficulty": "beginner",
+  "type": "quiz",
+  "question": "What is a union type in TypeScript? Give an example.",
+  "answer": "A union type is a type that can be one of several types, written with the `|` operator. For example: `type StringOrNumber = string | number;` — a variable of this type can hold either a string or a number.",
+  "explanation": "Union types model values that can be one of several forms. TypeScript narrows union types using type guards (typeof, instanceof, or discriminant properties). They're useful for modeling function parameters that accept multiple types, API responses that can be success or error shapes, or state machines."
+}

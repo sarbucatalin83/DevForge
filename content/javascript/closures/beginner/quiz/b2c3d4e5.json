@@ -1,0 +1,10 @@
+{
+  "id": "b2c3d4e5",
+  "track": "javascript",
+  "topic": "closures",
+  "difficulty": "beginner",
+  "type": "quiz",
+  "question": "What will the following code log?\n\nfunction makeCounter() {\n  let count = 0;\n  return function() {\n    count++;\n    return count;\n  };\n}\nconst counter = makeCounter();\nconsole.log(counter());\nconsole.log(counter());",
+  "answer": "1\n2",
+  "explanation": "makeCounter returns an inner function that closes over the `count` variable. Each call to counter() increments and returns the same `count` variable. Because the inner function holds a reference to `count` in its closure, the value persists across calls — first call returns 1, second returns 2."
+}

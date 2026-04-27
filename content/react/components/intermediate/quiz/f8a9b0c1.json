@@ -1,0 +1,10 @@
+{
+  "id": "f8a9b0c1",
+  "track": "react",
+  "topic": "components",
+  "difficulty": "intermediate",
+  "type": "quiz",
+  "question": "What is the purpose of the React `key` prop and what happens if you use array index as the key?",
+  "answer": "The `key` prop tells React which rendered element corresponds to which item in a list across renders. Using array index as key causes bugs when the list order changes (items are inserted, deleted, or reordered) — React reuses the DOM element for the wrong data, producing stale state and visual artifacts.",
+  "explanation": "Keys must be stable, unique, and predictable. Use a database ID, slug, or UUID as the key. Array index is only safe when the list is static and never reordered. When keys are wrong, controlled inputs in list items show data from the previous item, and animations trigger on the wrong element."
+}

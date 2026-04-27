@@ -1,0 +1,10 @@
+{
+  "id": "b4c5d6e7",
+  "track": "react",
+  "topic": "hooks",
+  "difficulty": "beginner",
+  "type": "quiz",
+  "question": "What is the difference between `useState` and `useRef` in React?",
+  "answer": "`useState` stores a value that, when updated with its setter, causes the component to re-render. `useRef` stores a value in a `.current` property that persists across renders but updating it does NOT trigger a re-render. useRef is also used to hold a reference to a DOM element.",
+  "explanation": "Use useState for any value that should be reflected in the UI when it changes. Use useRef for: timers, previous values you want to compare, DOM node references, or any mutable value you need to persist without causing unnecessary re-renders — for instance, storing a subscription or WebSocket instance."
+}
