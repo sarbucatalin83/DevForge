@@ -2,6 +2,7 @@ import express from 'express'
 import cors from 'cors'
 import type { ErrorRequestHandler } from 'express'
 import authMiddleware from './api/authMiddleware'
+import contentRouter from './api/content'
 
 const app = express()
 
@@ -9,8 +10,7 @@ app.use(cors({ origin: 'http://localhost:5173' }))
 app.use(express.json())
 app.use(authMiddleware)
 
-// Route mounts — populated in later phases
-// app.use('/api/content', contentRouter)
+app.use('/api/content', contentRouter)
 // app.use('/api/execute', executeRouter)
 // app.use('/api/coverage', coverageRouter)
 
