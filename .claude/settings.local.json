@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git -C \"D:/EU/DevForge\" branch)",
+      "Bash(git -C \"D:/EU/DevForge\" status --short)",
+      "Bash(git -C \"D:/EU/DevForge\" checkout main)",
+      "Bash(git -C \"D:/EU/DevForge\" branch -D 001-devlearn-platform)",
+      "Bash(git -C \"D:/EU/DevForge\" remote get-url origin)",
+      "Bash(git *)"
+    ]
+  }
+}
