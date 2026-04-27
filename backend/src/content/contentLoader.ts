@@ -93,7 +93,7 @@ function validateItem(raw: unknown): ContentItem | null {
 let cache: ContentItem[] | null = null
 
 function startWatcher(): void {
-  const contentDir = path.resolve(process.cwd(), 'content')
+  const contentDir = path.resolve(__dirname, '../../../content')
   try {
     fs.watch(contentDir, { recursive: true }, () => {
       cache = null
@@ -106,7 +106,7 @@ function startWatcher(): void {
 startWatcher()
 
 function loadAllItems(): ContentItem[] {
-  const contentDir = path.resolve(process.cwd(), 'content')
+  const contentDir = path.resolve(__dirname, '../../../content')
   const items: ContentItem[] = []
 
   function walk(dir: string) {
