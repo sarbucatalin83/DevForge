@@ -1,0 +1,29 @@
+{
+  "javascript": {
+    "image": "node:20-alpine",
+    "extension": ".js",
+    "runCommand": "node {file}",
+    "testCommand": "jest {testFile}",
+    "timeoutSeconds": 10,
+    "cpuLimit": "0.5",
+    "memoryLimit": "128m"
+  },
+  "typescript": {
+    "image": "node:20-alpine",
+    "extension": ".ts",
+    "runCommand": "npx ts-node {file}",
+    "testCommand": "npx jest {testFile}",
+    "timeoutSeconds": 15,
+    "cpuLimit": "0.5",
+    "memoryLimit": "128m"
+  },
+  "react": {
+    "image": "node:20-alpine",
+    "extension": ".tsx",
+    "runCommand": "npx vite build",
+    "testCommand": "npx jest {testFile}",
+    "timeoutSeconds": 20,
+    "cpuLimit": "1.0",
+    "memoryLimit": "256m"
+  }
+}
