@@ -2,6 +2,7 @@ import { useState, useMemo, useRef } from 'react'
 import { useContent } from '@/hooks/useContent'
 import { useProgress } from '@/hooks/useProgress'
 import { useCodeExecution } from '@/hooks/useCodeExecution'
+import { useFilterState } from '@/hooks/useFilterState'
 import { buildExerciseSession } from '@/lib/session'
 import { ExerciseEditor } from '@/components/exercise/ExerciseEditor'
 import { OutputPreview } from '@/components/exercise/OutputPreview'
@@ -13,13 +14,14 @@ import { Button } from '@/components/ui/button'
 import type { ContentFilter, CodingExercise } from '@/types/index'
 
 export default function ExercisePage() {
-  const [filter, setFilter] = useState<ContentFilter>({ type: 'exercise' })
+  const { filter, setFilter } = useFilterState()
   const [sessionIndex, setSessionIndex] = useState(0)
   const [sessionSeed, setSessionSeed] = useState(0)
   const [hasSubmitted, setHasSubmitted] = useState(false)
 
   const currentFilesRef = useRef<{ name: string; content: string }[]>([])
-  const { items: allItems, isLoading, error } = useContent(filter)
+  const activeFilter: ContentFilter = { ...filter, type: 'exercise' }
+  const { items: allItems, isLoading, error } = useContent(activeFilter)
   const { recordVerdict } = useProgress()
   const { submit, result, isSubmitting, error: execError } = useCodeExecution()
 
@@ -41,7 +43,7 @@ export default function ExercisePage() {
   const isComplete = !isLoading && exercises.length > 0 && sessionIndex >= exercises.length
 
   function handleFilterChange(f: ContentFilter) {
-    setFilter({ ...f, type: 'exercise' })
+    setFilter({ ...f, type: undefined })
     setSessionIndex(0)
     setSessionSeed((n) => n + 1)
     setHasSubmitted(false)
@@ -99,7 +101,7 @@ export default function ExercisePage() {
       <h1 className="text-2xl font-semibold">Coding Exercises</h1>
 
       <FilterBar
-        filter={filter}
+        filter={activeFilter}
         availableTopics={availableTopics}
         onFilterChange={handleFilterChange}
       />

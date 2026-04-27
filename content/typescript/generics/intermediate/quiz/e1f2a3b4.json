@@ -1,0 +1,10 @@
+{
+  "id": "e1f2a3b4",
+  "track": "typescript",
+  "topic": "generics",
+  "difficulty": "intermediate",
+  "type": "quiz",
+  "question": "What is the difference between `Array<T>` and `readonly T[]` in TypeScript?",
+  "answer": "`Array<T>` (or `T[]`) is a mutable array — you can push, pop, and splice. `readonly T[]` (or `ReadonlyArray<T>`) is an immutable view — TypeScript prevents any mutation methods like push or assignment by index, though the underlying array reference itself is not frozen.",
+  "explanation": "Use readonly arrays for function parameters that should not be mutated, return types from pure functions, or state in React where mutation would bypass the rendering cycle. The readonly modifier only applies at the TypeScript type level; at runtime both are plain JavaScript arrays."
+}

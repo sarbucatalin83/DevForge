@@ -1,0 +1,10 @@
+{
+  "id": "f6a7b8c9",
+  "track": "javascript",
+  "topic": "promises",
+  "difficulty": "intermediate",
+  "type": "quiz",
+  "question": "How do you properly handle errors in an async/await function?",
+  "answer": "Wrap the awaited expression in a try/catch block. The catch block receives the rejection reason as an Error object. Alternatively, append .catch() directly to the awaited promise.",
+  "explanation": "async/await is syntactic sugar over promises. When an awaited promise rejects, it throws an exception inside the async function. try/catch is the idiomatic way to handle this. Without it, the rejection becomes an unhandled promise rejection — which Node.js will eventually treat as a fatal error."
+}

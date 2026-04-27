@@ -1,0 +1,10 @@
+{
+  "id": "e7f8a9b0",
+  "track": "react",
+  "topic": "components",
+  "difficulty": "intermediate",
+  "type": "quiz",
+  "question": "What causes unnecessary re-renders and how can you prevent them?",
+  "answer": "A component re-renders when its state or props change, or when its parent re-renders. Common unnecessary re-render causes: passing new object/array/function literals as props on every render, context value changes. Solutions: stabilise reference identity (useMemo for objects, useCallback for functions — only when profiling shows a problem), split large contexts, or use React.memo to skip re-renders when props are shallowly equal.",
+  "explanation": "In React 19 the compiler automatically applies optimisations equivalent to useMemo/useCallback where safe, so manual memoisation is rarely needed. Profile with React DevTools before optimising — premature memoisation adds complexity without benefit. The most effective fix is usually better component decomposition."
+}

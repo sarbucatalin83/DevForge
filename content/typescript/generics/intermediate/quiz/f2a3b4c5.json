@@ -1,0 +1,10 @@
+{
+  "id": "f2a3b4c5",
+  "track": "typescript",
+  "topic": "generics",
+  "difficulty": "intermediate",
+  "type": "quiz",
+  "question": "What does the built-in utility type `Partial<T>` do?",
+  "answer": "`Partial<T>` constructs a type with all properties of T set to optional (adding `?` to each). It is equivalent to `{ [K in keyof T]?: T[K] }`. Useful for update/patch functions that accept a subset of fields.",
+  "explanation": "TypeScript ships many built-in utility types built from mapped types: Partial, Required, Readonly, Pick, Omit, Record, Exclude, Extract, ReturnType, etc. Understanding these is key to writing expressive generic code without reimplementing common transformations."
+}

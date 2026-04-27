@@ -1,0 +1,10 @@
+{
+  "id": "e5f6a7b8",
+  "track": "javascript",
+  "topic": "promises",
+  "difficulty": "intermediate",
+  "type": "quiz",
+  "question": "What does the following code log and in what order?\n\nconsole.log('a');\nPromise.resolve().then(() => console.log('b'));\nconsole.log('c');",
+  "answer": "a\nc\nb",
+  "explanation": "Synchronous code runs first: 'a' then 'c'. Promise callbacks (microtasks) are queued in the microtask queue and run after the current synchronous call stack completes but before any macrotasks (setTimeout, etc.). So 'b' prints after 'c' even though it was scheduled before 'c' was logged."
+}

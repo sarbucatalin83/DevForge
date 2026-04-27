@@ -17,7 +17,10 @@ function toKey(itemId: string): string {
 function parseRecord(raw: string): ProgressRecord | null {
   try {
     return JSON.parse(raw) as ProgressRecord
-  } catch {
+  } catch (err) {
+    if (err instanceof SyntaxError) {
+      console.warn('devlearn: discarding corrupted progress record (invalid JSON)')
+    }
     return null
   }
 }

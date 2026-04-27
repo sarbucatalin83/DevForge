@@ -1,0 +1,10 @@
+{
+  "id": "a3b4c5d6",
+  "track": "react",
+  "topic": "hooks",
+  "difficulty": "beginner",
+  "type": "quiz",
+  "question": "What is the rule about where you can call React hooks?",
+  "answer": "Hooks must be called at the top level of a React function component or a custom hook — never inside loops, conditions, or nested functions. They must also only be called from React functions, not plain JavaScript functions.",
+  "explanation": "React relies on the order of hook calls to associate each hook with its state between renders. Calling hooks conditionally or inside loops would change the call order between renders, corrupting the internal state. The eslint-plugin-react-hooks enforces these rules statically."
+}

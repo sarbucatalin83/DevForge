@@ -1,0 +1,10 @@
+{
+  "id": "b8c9d0e1",
+  "track": "typescript",
+  "topic": "types",
+  "difficulty": "beginner",
+  "type": "quiz",
+  "question": "What does `unknown` mean in TypeScript, and how does it differ from `any`?",
+  "answer": "`unknown` is the type-safe counterpart to `any`. A value of type `unknown` can hold any value, but TypeScript will not let you perform operations on it without first narrowing the type (e.g., with typeof, instanceof, or a type guard). `any` disables all type checking — you can do anything with it.",
+  "explanation": "Use `unknown` when you receive data from an external source (API response, user input) and want to be forced to validate it before use. Use `any` only as a last resort when migrating legacy JS code. With `strict: true` TypeScript will catch unsafe `unknown` usage at compile time."
+}

@@ -1,0 +1,10 @@
+{
+  "id": "a1b2c3d4",
+  "track": "javascript",
+  "topic": "closures",
+  "difficulty": "beginner",
+  "type": "quiz",
+  "question": "What is a closure in JavaScript?",
+  "answer": "A closure is a function that retains access to variables from its outer (enclosing) lexical scope even after the outer function has finished executing.",
+  "explanation": "When a function is defined inside another function, the inner function forms a closure over the outer function's variables. These variables are kept alive in memory as long as the inner function exists, because the inner function holds a reference to them. This is a core feature of JavaScript's lexical scoping."
+}

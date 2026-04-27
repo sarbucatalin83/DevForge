@@ -1,0 +1,10 @@
+{
+  "id": "a7b8c9d0",
+  "track": "typescript",
+  "topic": "types",
+  "difficulty": "beginner",
+  "type": "quiz",
+  "question": "What is the difference between `type` and `interface` in TypeScript?",
+  "answer": "Both define shapes for objects. The key differences: `interface` can be extended with `extends` and merged with declaration merging (multiple declarations with the same name merge automatically). `type` aliases are more flexible — they can alias primitives, unions, tuples, and mapped types, but cannot be re-opened for merging.",
+  "explanation": "In modern TypeScript the choice is mostly style preference. Prefer `interface` for public API definitions (where consumers may want to extend or merge). Prefer `type` for unions, intersections, and utility types. With `strict: true`, both behave identically for plain object shapes."
+}

@@ -4,6 +4,7 @@ import type { ErrorRequestHandler } from 'express'
 import authMiddleware from './api/authMiddleware'
 import contentRouter from './api/content'
 import executeRouter from './api/execute'
+import coverageRouter from './api/coverage'
 
 const app = express()
 
@@ -13,7 +14,7 @@ app.use(authMiddleware)
 
 app.use('/api/content', contentRouter)
 app.use('/api/execute', executeRouter)
-// app.use('/api/coverage', coverageRouter)
+app.use('/api/coverage', coverageRouter)
 
 app.get('/health', (_req, res) => {
   res.json({ status: 'ok' })

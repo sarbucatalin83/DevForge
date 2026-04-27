@@ -1,0 +1,10 @@
+{
+  "id": "d6e7f8a9",
+  "track": "react",
+  "topic": "components",
+  "difficulty": "intermediate",
+  "type": "quiz",
+  "question": "What is the difference between controlled and uncontrolled components in React?",
+  "answer": "A controlled component has its form input value driven by React state — the value prop is set and every change is handled via an onChange callback that updates state. An uncontrolled component stores its own internal state in the DOM and is read with a ref when needed.",
+  "explanation": "Controlled components give React full ownership of form data, making validation, conditional disabling, and synchronisation between fields straightforward. Uncontrolled components are simpler for one-off inputs (like file uploads) where you only need the value on submit. Prefer controlled components in new code."
+}
