@@ -51,3 +51,10 @@ export type ContentLoadResult = {
   items: (QuizItem | CodingExercise)[]
   skippedCount: number
 }
+
+export type ExecutionResult = {
+  passed: boolean
+  testOutput: string
+  previewHtml: string | null
+  timedOut: boolean
+}
